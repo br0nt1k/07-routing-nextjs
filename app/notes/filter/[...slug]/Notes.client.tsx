@@ -8,15 +8,14 @@ import NoteList from "@/components/NoteList/NoteList";
 import SearchBox from "@/components/SearchBox/SearchBox";
 import Pagination from "@/components/Pagination/Pagination";
 import Modal from "@/components/Modal/Modal";
-import { fetchNotes, NotesResponse } from "@/lib/api";
+import { fetchNotes } from "@/lib/api";
 import NoteForm from "@/components/NoteForm/NoteForm";
 
 type NotesClientProps = {
-  initialData: NotesResponse;
   tag?: string;
 };
 
-const NotesClient = ({ initialData, tag }: NotesClientProps) => {
+const NotesClient = ({ tag }: NotesClientProps) => {
   const [searchQuery, setSearchQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,8 +30,6 @@ const NotesClient = ({ initialData, tag }: NotesClientProps) => {
         tag === "all" ? "" : tag
       ),
     placeholderData: keepPreviousData,
-    initialData:
-      currentPage === 1 && !debouncedSearchQuery ? initialData : undefined,
   });
 
   const handleSearch = (query: string) => {

@@ -15,6 +15,9 @@ const Header = () => {
             <Link href="/">Home</Link>
           </li>
           <li>
+            <Link href="/notes/filter/all">All Notes</Link>
+          </li>
+          <li>
             <TagsMenu />
           </li>
         </ul>
