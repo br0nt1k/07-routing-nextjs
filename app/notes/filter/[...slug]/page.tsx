@@ -8,11 +8,12 @@ import {
 } from "@tanstack/react-query";
 
 type Props = {
-  params: { slug: string[] }; 
+  params: Promise<{ slug: string[] }>; 
 };
 
 const NotesByCategory = async ({ params }: Props) => {
-  const { slug } = params;
+  const { slug } = await params;
+  
   const tag = slug[0] === "all" ? undefined : slug[0];
   
   const queryClient = new QueryClient();
